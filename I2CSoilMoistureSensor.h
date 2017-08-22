@@ -18,6 +18,10 @@
 #include <WProgram.h> 
 #endif
 
+//
+#define CHIRP_SENSOR 0
+#define SENSOR_ONLY 1
+
 //Default I2C Address of the sensor
 #define SOILMOISTURESENSOR_DEFAULT_ADDR 0x20
 
@@ -38,7 +42,7 @@ class I2CSoilMoistureSensor {
     public:
         I2CSoilMoistureSensor(uint8_t addr = SOILMOISTURESENSOR_DEFAULT_ADDR);
 
-		void begin(bool wait = false);
+		void begin(int type = CHIRP_SENSOR, bool wait = false);
         unsigned int getCapacitance();
         bool setAddress(int addr, bool reset);
         void changeSensor(int addr, bool wait = false);
